@@ -1,0 +1,48 @@
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-color-pri);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        font-size: 5.5rem; 
+        span{
+            transition: none;
+        }
+    }
+
+    .bar {
+        width: 100%;
+        height: 1px;
+        background: rgba(75, 75, 75, 0.274);
+
+        .progress-perc {
+            display: block;
+            height: 100%;
+            position: relative;
+            width: 0%;
+            background: #fff;
+            transition: .8s;
+
+            &::after {
+                content: attr(perc);
+                right: 0;
+                top: calc(100% + 20px);
+                width: 5px;
+                height: 5px;
+                display: block;
+                text-align: right;
+                margin: auto;
+                font-size: 15rem;
+                padding-top: 2rem;
+                color: #252525;
+            }
+        }
+    }
+}

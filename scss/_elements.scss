@@ -1,0 +1,147 @@
+/* mixins */
+
+
+@mixin slidingFontTextClip {
+    background: -webkit-gradient(linear, left top, right top,
+            color-stop(0, #4d4d4d),
+            color-stop(-0.4, #4d4d4d),
+            color-stop(0.5, white),
+            color-stop(0.6, #4d4d4d),
+            color-stop(1, #4d4d4d));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    // -webkit-animation: slidingTextClipAnimation 5s infinite;
+    transition: 5s;
+}
+
+/* Animations */
+
+
+@keyframes slidingTextClipAnimation {
+    0% {
+        background-position: right -15% bottom 45%;
+    }
+
+    100% {
+        background-position: 300px 0;
+    }
+}
+
+@keyframes shadowPulse {
+    0% {
+        box-shadow: 0px 0px 5px 2px grey;
+    }
+
+    50% {
+        box-shadow: 0px 0px 8px 4px grey;
+    }
+
+    100% {
+        box-shadow: 0px 0px 5px 2px grey;
+    }
+}
+
+/*Variables */
+:root {
+    --bg-color-pri: #181818;
+    --font-color-pri: #d2d2d2;
+    --font-gradient-bg: -webkit-gradient(linear, left top, right top,
+            color-stop(0, #4d4d4d),
+            color-stop(-0.4, #4d4d4d),
+            color-stop(0.5, white),
+            color-stop(-0.6, #4d4d4d),
+            color-stop(1, #4d4d4d));
+    ;
+
+}
+
+* {
+    &:focus {
+        outline: none !important;
+    }
+}
+
+html {
+    font-size: 62.5%;
+
+    @include media-breakpoint-down(lg) {
+        font-size: 51.62%;
+    }
+
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+
+}
+
+body {
+    font-family: 'Manrope';
+    background: var(--bg-color-pri);
+    font-size: 1.6rem;
+    color: var(--font-color-pri);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.animateText  {
+    font-weight: 600;
+
+    span,
+    text {
+        @include slidingFontTextClip();
+    }
+}
+
+
+h1,
+.animateText {
+    letter-spacing: .3rem;
+    font-weight: 700;
+}
+
+h2{
+    font-size: 4.4rem;
+    span{
+        transition: none;
+    }
+}
+
+h3{
+    font-size: 3.65rem;
+}
+
+p{
+    font-size: 1.8rem;
+    &.big{
+        font-size: 3rem;
+    }
+}
+
+
+.scroll-btn{
+    transform: rotate(90deg);
+    display: inline-block;
+    margin-bottom: 7.5rem;
+    font-weight: 600;
+    @include slidingFontTextClip();
+
+}
+
+.ripples {
+    position: relative;
+    z-index: 1;
+
+    canvas {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+    }
+}

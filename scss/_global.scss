@@ -1,0 +1,99 @@
+header {
+    .navbar {
+
+        .navbar-brand {
+            h3 {
+                font-size: 3rem;
+            }
+        }
+
+        .nav-link {
+            color: var(--font-color-pri);
+            margin: 0 2rem;
+        }
+
+        .animateText {
+            height: 35px;
+        }
+
+        .hamburger {
+            span {
+                display: block;
+                width: 30px;
+                height: 3px;
+                background: #fff;
+                margin: 6px 0;
+                position: relative;
+                transition: 0.4s;
+
+                &::after,
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: #fff;
+                    transition: 0.4s;
+                }
+
+                &::before {
+                    top: -8px;
+                }
+
+                &::after {
+                    bottom: -8px;
+                }
+            }
+
+            &.change {
+                span {
+                    background: transparent;
+
+                    &::before {
+                        transform: rotate(-45deg) translate(-6px, 6px);
+                    }
+
+                    &::after {
+                        transform: rotate(45deg) translate(-5px, -6px);
+                    }
+                }
+            }
+        }
+    }
+}
+
+section {
+    height: 100vh;
+
+    &.intro {
+        display: flex;
+        height: calc(100vh - 121px);
+
+        .wrapper {
+            background: url("../images/bg-1.jpg") center center no-repeat;
+            background-size: cover;
+            height: auto;
+            width: 100%;
+            align-self: flex-end;
+            height: calc(100vh - 121px);
+        }
+    }
+
+    &.how-we-work {
+        .bg-sec {
+            background-image: url("../images/bg-2.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding-top: 17rem;
+            margin-top: -5rem;
+            height: calc(100% - 109px);
+            background-attachment: fixed;
+
+            .row>div {
+                padding-bottom: 7rem;
+            }
+        }
+    }
+}

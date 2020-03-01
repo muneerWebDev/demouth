@@ -4,7 +4,7 @@
 @mixin slidingFontTextClip {
     background: -webkit-gradient(linear, left top, right top,
             color-stop(0, #4d4d4d),
-            color-stop(-0.4, #4d4d4d),
+            color-stop(0.6, #4d4d4d),
             color-stop(0.5, white),
             color-stop(0.6, #4d4d4d),
             color-stop(1, #4d4d4d));
@@ -12,7 +12,7 @@
     -webkit-background-clip: text;
     color: transparent;
     // -webkit-animation: slidingTextClipAnimation 5s infinite;
-    transition: 5s;
+    // transition: 5s;
 }
 
 /* Animations */
@@ -117,6 +117,11 @@ h3{
     font-size: 3.65rem;
 }
 
+h4{
+    font-size: 2.9rem;
+    font-weight: 300;
+}
+
 p{
     font-size: 1.8rem;
     &.big{
@@ -144,4 +149,8 @@ p{
         top: 0;
         z-index: -1;
     }
+}
+
+.min-h-100vh{
+    height: 100vh !important;
 }

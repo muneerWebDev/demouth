@@ -1,25 +1,29 @@
 /* preloader */
+var $bar = $(".preloader .bar");
+var $percBar = $(".progress-perc");
+
 var progress = setInterval(function () {
-    var $bar = $(".preloader .bar");
-    var $percBar = $(".progress-perc");
 
     if ($percBar.width() >= 100) {
         clearInterval(progress);
     } else {
-        $percBar.width($percBar.width() + (Math.random() * 10) + 1 + '%');
-        var widthInPerc = ($($percBar).width() / $($bar).width()) * 100;
-        $($percBar).attr('perc', Math.ceil(widthInPerc) + "%");
+        var newWidth = $percBar.width() + (Math.random() * 10);
+        $percBar.width(newWidth + '%');
+       
+        $($percBar).attr('perc', Math.ceil(newWidth) + "%");
         console.log("barWiidth :" + $($bar).width() + " percWidth :" + $($percBar).width());
     }
 
 }, 600);
 
-$(window).on('load', function () {
+function preloaderFade() {
+    $(".progress-perc").width(100 + '%');
+    $($percBar).attr('perc', 100 + "%");
+    $(".preloader").fadeOut(1000);
+}
 
-    function preloaderFade() {
-        $(".progress-perc").width(100 + '%');
-        $(".preloader").fadeOut(1000);
-    }
+
+$(window).on('load', function () {
 
     setTimeout(function () {
         preloaderFade();
@@ -27,13 +31,13 @@ $(window).on('load', function () {
 
 });
 
-$('.intro .wrapper').ripples({
-    resolution: 200,
-    dropRadius: 10,
-    perturbance: 0.005,
-    interactive: true,
-    crossOrigin: ''
-});
+// $('.intro .wrapper').ripples({
+//     resolution: 200,
+//     dropRadius: 10,
+//     perturbance: 0.005,
+//     interactive: true,
+//     crossOrigin: ''
+// });
 
 $(document).ready(function () {
 
@@ -49,10 +53,10 @@ $(document).ready(function () {
     }, 15);
 
     window.setInterval(function () {
-        sec += 1;
+        sec += .000000000001;
         $(".slidingAnimation.animate span, .scroll-btn").css("background-position", sec + "px 0");
-    }, 500);
-
+    }, 0);
+``
 
 
     //detect mouse wheel scroll direction
@@ -65,18 +69,19 @@ $(document).ready(function () {
         if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
 
             // scroll up
-            if (currentScrollPos > screenHeight/2) {
+            if (currentScrollPos < screenHeight*2) {
+                $('html, body').stop();
                 var scrollTo = $(window).scrollTop() - $(window).height();
                 $('html, body').animate({
                     scrollTop: scrollTo
                 }, 900);
-
             }
 
         } else {
 
             // scroll down
-            if (currentScrollPos < pageHeight) {
+            if (currentScrollPos < screenHeight*2) {
+                $('html, body').stop();
                 var scrollTo = $(window).scrollTop() + $(window).height();
                 $('html, body').animate({
                     scrollTop: scrollTo
@@ -88,15 +93,16 @@ $(document).ready(function () {
 
 
     $(".scroll-btn").click(function () {
+        $('html, body').stop();
         $('html, body').animate({
             scrollTop: $(window).height()
         }, 900);
     });
-      
+
 
 });
 
 //AOS Animatiion init
 AOS.init({
     duration: 1500,
-  })
+})

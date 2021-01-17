@@ -90,7 +90,7 @@ h3,
 h4,
 h5,
 h6,
-.animateText  {
+.animateText {
     font-weight: 600;
 
     span,
@@ -106,37 +106,61 @@ h1,
     font-weight: 700;
 }
 
-h2{
+h2 {
     font-size: 4.4rem;
-    span{
+
+    span {
         transition: none;
     }
 }
 
-h3{
+h3 {
     font-size: 3.65rem;
 }
 
-h4{
+h4 {
     font-size: 2.9rem;
     font-weight: 300;
 }
 
-p{
+p {
     font-size: 1.8rem;
-    &.big{
-        font-size: 3rem;
+
+    &.big {
+        font-size: 3.5rem;
+
+        span {
+            transition: .3s;
+            display: inline-block;
+
+            &:hover {
+                span {
+                    -webkit-text-stroke: 0.5px #ffff;
+                    transform: skew(-10deg);
+                    -webkit-text-fill-color: transparent;
+                }
+            }
+        }
     }
 }
 
+a {
+    &:hover {
+        text-decoration: none;
+        color: var(--font-color-pri);
+    }
+}
 
-.scroll-btn{
+.scroll-btn {
     transform: rotate(90deg);
     display: inline-block;
     margin-bottom: 7.5rem;
     font-weight: 600;
     @include slidingFontTextClip();
 
+    &:hover {
+        @include slidingFontTextClip();
+    }
 }
 
 .ripples {
@@ -151,6 +175,6 @@ p{
     }
 }
 
-.min-h-100vh{
+.min-h-100vh {
     height: 100vh !important;
 }
